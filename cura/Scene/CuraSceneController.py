@@ -1,3 +1,5 @@
+from typing import Optional
+
 from UM.Logger import Logger
 
 from PyQt5.QtCore import Qt, pyqtSlot, QObject, QTimer
@@ -18,8 +20,8 @@ from UM.Signal import Signal
 class CuraSceneController(QObject):
     activeBuildPlateChanged = Signal()
 
-    def __init__(self, objects_model: ObjectsModel, multi_build_plate_model: MultiBuildPlateModel) -> None:
-        super().__init__()
+    def __init__(self, objects_model: ObjectsModel, multi_build_plate_model: MultiBuildPlateModel, parent: Optional[QObject]) -> None:
+        super(CuraSceneController, self).__init__(parent = parent)
 
         self._objects_model = objects_model
         self._multi_build_plate_model = multi_build_plate_model
@@ -151,4 +153,4 @@ class CuraSceneController(QObject):
     def createCuraSceneController():
         objects_model = Application.getInstance().getObjectsModel()
         multi_build_plate_model = Application.getInstance().getMultiBuildPlateModel()
-        return CuraSceneController(objects_model = objects_model, multi_build_plate_model = multi_build_plate_model)
+        return CuraSceneController(objects_model = objects_model, multi_build_plate_model = multi_build_plate_model, parent = Application.getInstance())
