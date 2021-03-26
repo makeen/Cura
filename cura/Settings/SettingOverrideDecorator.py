@@ -37,7 +37,7 @@ class SettingOverrideDecorator(SceneNodeDecorator):
 
     def __init__(self, *, force_update = True):
         super().__init__()
-        self._stack = PerObjectContainerStack(container_id = "per_object_stack_" + str(id(self)))
+        self._stack = PerObjectContainerStack(container_id = "per_object_stack_" + str(id(self)), parent = Application.getInstance())
         self._stack.setDirty(False)  # This stack does not need to be saved.
         user_container = InstanceContainer(container_id = self._generateUniqueName())
         user_container.setMetaDataEntry("type", "user")

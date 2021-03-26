@@ -39,8 +39,8 @@ class CuraContainerStack(ContainerStack):
     will raise an exception.
     """
 
-    def __init__(self, container_id: str) -> None:
-        super().__init__(container_id)
+    def __init__(self, container_id: str, parent: Optional[QObject]) -> None:
+        super(CuraContainerStack, self).__init__(stack_id = container_id, parent = parent)
 
         self._empty_instance_container = cura_empty_instance_containers.empty_container #type: InstanceContainer
 

@@ -25,8 +25,8 @@ if TYPE_CHECKING:
 class ExtruderStack(CuraContainerStack):
     """Represents an Extruder and its related containers."""
 
-    def __init__(self, container_id: str) -> None:
-        super().__init__(container_id)
+    def __init__(self, container_id: str, parent: Optional["QObject"]) -> None:
+        super(ExtruderStack, self).__init__(container_id, parent = parent)
 
         self.setMetaDataEntry("type", "extruder_train") # For backward compatibility
 
