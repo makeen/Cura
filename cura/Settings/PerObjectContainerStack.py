@@ -12,6 +12,9 @@ from .CuraContainerStack import CuraContainerStack
 
 
 class PerObjectContainerStack(CuraContainerStack):
+    def __init__(self, container_id: str, parent: Optional["QObject"]) -> None:
+        super(PerObjectContainerStack, self).__init__(container_id, parent = parent)
+
     def isDirty(self):
         # This stack should never be auto saved, so always return that there is nothing to save. 
         return False

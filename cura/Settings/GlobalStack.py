@@ -32,8 +32,8 @@ if TYPE_CHECKING:
 class GlobalStack(CuraContainerStack):
     """Represents the Global or Machine stack and its related containers."""
 
-    def __init__(self, container_id: str) -> None:
-        super().__init__(container_id)
+    def __init__(self, container_id: str, parent: Optional["QObject"]) -> None:
+        super().__init__(container_id, parent = parent)
 
         self.setMetaDataEntry("type", "machine")  # For backward compatibility
 
