@@ -157,7 +157,7 @@ UM.PreferencesPage
 
                         Component.onCompleted: {
                             append({ text: "English", code: "en_US" })
-                            append({ text: "Čeština", code: "cs_CZ" })
+                            //Czech is disabled for being incomplete: append({ text: "Čeština", code: "cs_CZ" })
                             append({ text: "Deutsch", code: "de_DE" })
                             append({ text: "Español", code: "es_ES" })
                             //Finnish is disabled for being incomplete: append({ text: "Suomi", code: "fi_FI" })
@@ -416,7 +416,7 @@ UM.PreferencesPage
                 Connections
                 {
                     target: UM.Preferences
-                    onPreferenceChanged:
+                    function onPreferenceChanged(preference)
                     {
                         if(preference != "general/camera_perspective_mode")
                         {
@@ -856,7 +856,7 @@ UM.PreferencesPage
             Connections
             {
                 target: UM.Preferences
-                onPreferenceChanged:
+                function onPreferenceChanged(preference)
                 {
                     if (preference !== "info/send_slice_info")
                     {
